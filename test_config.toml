@@ -22,7 +22,7 @@ snp_file_name = "1404maize_180K.csv"
 pca_snp_file_name = "final_5K_300.csv"
 dataset = "1404maize_180K"
 trait = "Maize_PH"
-root_path = "/home/user/code/git/Final_EGGPT/"
+root_path = "/home/user/code/git/EGGPT-V1.0/"
 aim_num = 1800 # GWAS取前多少的结果
 optuna = 40 # 多少次optuna
 

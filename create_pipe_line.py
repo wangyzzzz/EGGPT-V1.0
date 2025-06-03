@@ -32,20 +32,20 @@ lstm_device = str(config["device"]["LSTM"])
 #-----------------------------------#
 # conda
 conda_init = 'eval "$(conda shell.bash hook)"'
-rapids_conda_activate = 'conda activate rapids-24.02'
+rapids_conda_activate = '# conda activate rapids-24.02'
 torch1_conda_activate = 'conda activate torch1'
 tf_conda_activate = 'conda activate tf_env1'
 #-----------------------------------#
 
 #-----------------------------------#
 # K-Fold Component
-k_fold_component = f"python {root_path}1_Data_Collection/1_1_public_K_Fold.py --trait_name  {trait_name} --root_path {root_path} --k_fold {k_fold} --threshold {threshold}"
+k_fold_component = f"# python {root_path}1_Data_Collection/1_1_public_K_Fold.py --trait_name  {trait_name} --root_path {root_path} --k_fold {k_fold} --threshold {threshold}"
 #-----------------------------------#
 
 #-----------------------------------#
 # SNP PCA Component
 snp_pca_component = ""
-snp_pca_cmd = f"python {root_path}2_Data_Processing/2_1_get_pca_csv.py --trait_name {trait_name} --root_path {root_path} --csv_path {snp_pca_csv_path} --phenotype_path {phenotype_path} --fold "
+snp_pca_cmd = f"# python {root_path}2_Data_Processing/2_1_get_pca_csv.py --trait_name {trait_name} --root_path {root_path} --csv_path {snp_pca_csv_path} --phenotype_path {phenotype_path} --fold "
 for i in range(int(config["train_parameter"]["k_fold"])):
     snp_pca_component += f"{snp_pca_cmd}{i}\n"
 #-----------------------------------#
@@ -64,7 +64,7 @@ for i in range(int(config["train_parameter"]["k_fold"])):
 
 #-----------------------------------#
 # SNP encoding Component
-snp_encoding_component = f"python {root_path}3_Data_Encoding/3_SNPs_process.py --trait_name {trait_name} --root_path {root_path} --k_fold {k_fold} --snp_file_name {snp_file_name} --aim_num {aim_num}"
+snp_encoding_component = f"# python {root_path}3_Data_Encoding/3_SNPs_process.py --trait_name {trait_name} --root_path {root_path} --k_fold {k_fold} --snp_file_name {snp_file_name} --aim_num {aim_num}"
 #-----------------------------------#
 
 # Define base model component commands
