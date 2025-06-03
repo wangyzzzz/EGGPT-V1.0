@@ -5,7 +5,9 @@ components = ["SNP"]
 components = ["PCA", "GWAS", "GRM"]
 
 [data_encoding]
-components = ["1D", "2D", "3D"]
+# components = ["1D", "2D", "3D"]
+components = ["1D"]
+
 
 [base_model]
 components = ["MLP", "RF", "SVR", "LGB", "CNN", "LSTM", "TE"]
