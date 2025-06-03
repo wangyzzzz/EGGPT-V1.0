@@ -1,0 +1,55 @@
+[data_collection]
+components = ["SNP"]
+
+[data_processing]
+components = ["PCA", "GWAS", "GRM"]
+
+[data_encoding]
+components = ["1D", "2D", "3D"]
+
+[base_model]
+components = ["MLP", "RF", "SVR", "LGB", "CNN", "LSTM", "TE"]
+
+[meta_model]
+components = ["Stacking", "Model_pruning"]
+
+[train_parameter]
+k_fold = 10
+threshold = 100
+select_hp = false # 搜索基模型超参数
+parallel = false # 并行
+snp_file_name = "1404maize_180K.csv"
+pca_snp_file_name = "final_5K_300.csv"
+dataset = "1404maize_180K"
+trait = "Maize_PH"
+root_path = "/home/user/code/git/Final_EGGPT/"
+aim_num = 1800 # GWAS取前多少的结果
+optuna = 40 # 多少次optuna
+
+[device]
+MLP = "cpu"
+CNN = "cuda:0"
+LSTM = "cuda:0"
+TE = "cuda:0"
+
+[default_hp]
+    [default_hp.MLP]
+    lr = 0.00001
+    bs = 256
+    dropout = 0.3
+    [default_hp.LSTM]
+    lr = 0.00001
+    bs = 128
+    dropout = 0.3
+    [default_hp.TE]
+    lr = 0.00001
+    bs = 128
+    dropout = 0.3
+    [default_hp.CNN]
+    lr = 0.00001
+    bs = 128
+    dropout = 0.3
+
+
+[to_do]
+run_model = 0
